@@ -7,6 +7,43 @@
     <title>Title</title>
 </head>
 <body>
-    
+    <div id="root">
+		<svg viewBox="0 0 220 100">
+
+		  	<rect id="room1" class="x-excluded" width="35" height="25" />
+		  	<rect id="room2" width="10" height="10" x="35" />
+			<rect id="room3" width="10" height="10" x="45" />
+			<rect id="room4" class="y-alocated" width="22" height="13" x="37" y="12" />
+			<rect id="room5" width="10" height="25" x="55" />
+			<rect id="room6" width="10" height="25" x="65" />
+		  
+		</svg>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="jquery.balloon.min.js"></script>
+	<script type="text/javascript">
+        
+        $('rect').balloon({
+            position:'bottom',
+            css: {
+                fontSize: "1em",
+                minWidth: "1em"
+            }
+        })
+
+		let arr = document.querySelectorAll('rect')
+		let b = []
+		let a = 0
+		arr.forEach(e=>{
+            e.setAttribute('title',e.id)
+			if(e.className.baseVal !== 'x-excluded' && e.className.baseVal !== "y-alocated")
+			{
+				a++
+				b.push(e)
+				b[b.length-1].x.baseVal.value+=(2*a)
+			}
+		})
+
+	</script>
 </body>
 </html>
